@@ -19,10 +19,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "INTERNET",
+        "RECORD_AUDIO"
+      ],
+      "package": "com.carlitos206.speech_fe_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6f0f4f1f-1cd4-4249-803c-9bd1b4cbba55"
+      }
     }
   }
 }
