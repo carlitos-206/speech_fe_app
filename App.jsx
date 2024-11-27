@@ -22,7 +22,7 @@ const ChatApp = () => {
       try {
         const test = await connection_test();
         if (test) {
-          Alert.alert('Connection Successful');
+          Alert.alert(`Connection Successful: ${test}`);
         } else {
           Alert.alert('No backend connection');
         }
@@ -73,8 +73,14 @@ const ChatApp = () => {
     try {
       const { sound } = await Audio.Sound.createAsync({ uri });
       await sound.playAsync();
+      // Automatically unload after playback
+      sound.setOnPlaybackStatusUpdate((status) => {
+        if (status.didJustFinish) {
+          sound.unloadAsync();
+        }
+      });
     } catch (error) {
-      console.error('Error playing sound', error);
+      console.error("Error playing sound", error);
     }
   };
 
@@ -137,10 +143,12 @@ const styles = StyleSheet.create({
   sentMessage: {
     alignSelf: 'flex-end',
     backgroundColor: '#007AFF',
+    color: '#fff',
   },
   receivedMessage: {
     alignSelf: 'flex-start',
     backgroundColor: '#e0e0e0',
+    color: '#000',
   },
   messageText: {
     color: '#fff',
