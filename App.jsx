@@ -1,4 +1,8 @@
+import 'react-native-get-random-values';
 import React, { useEffect } from 'react';
+import {
+  Alert
+} from 'react-native'
 import ChatApp from './components/chat/chat';
 import { connection_test } from './backend/api_calls';
 
